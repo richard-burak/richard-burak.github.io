@@ -170,10 +170,6 @@ pre {
 			<td>2 hours</td>
 		</tr>
 		<tr>
-			<td>Unit Testing Sensors</td>
-			<td>2 hours</td>
-		</tr>
-		<tr>
 			<td>Printing PCBs</td>
 			<td>N/A</td>
 		</tr>
@@ -184,6 +180,10 @@ pre {
 		<tr>
 			<td>Testing PCBs</td>
 			<td>30 minutes</td>
+		</tr>
+		<tr>
+			<td>Unit Testing Sensors</td>
+			<td>2 hours</td>
 		</tr>
 		<tr>
 			<td>Connecting Circuits</td>
@@ -291,49 +291,99 @@ pre {
 	<H3>Step 3: Unit Testing Sensors</H3>
 	<p>
 		To test the sensors, first connect the Modular Sensor Hat to your Raspberry Pi. Next, connect the barometric pressure sensor to the 4-pin header labelled "DS-RTC", making sure to match the labels on the board 
-		and breakout. Next, connect the YL-40 board provided in the Humber components pack to the neighbouring 4-pin header labelled "PCF - ADC".
+		and breakout. Next, connect the YL-40 board provided in the Humber components pack to the neighbouring 4-pin header labelled "PCF - ADC", also making sure to match the labels.<br>
+		Back on the Raspberry Pi, run the following command to test the connection to the sensors: 
 		<pre><code> i2cdetect -y 1</code></pre>
+		The output should be as below. This mean that the sensors are being read by I2C on the Pi.
+		<pre><code>      0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+ 00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
+ 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 70: -- -- -- -- -- -- -- 77</code></pre>
+	</p>
+	<p>
+		To test the Solar Cell, simply connect it to a multimeter and measure how much voltage is being generated. Try covering it and moving it closer to light to see if the readings varry. Finally, to test the DHT-11,
+		connect it to the Pi's GPIO. Make sure to correctly connect ground and power, as the DHT is fragile. Connect the pin labelled 'S' to pin 7 of the GPIO (refer to the above image for the pinout). In the solar.py 
+		file, comment out lines 26-32. This will mean that only the DHT will be read from. Run the program using:<br>
+		<pre><code> python solar.py</code></pre>
+		If the DHT is functioning, then readings will appear on screen, otherwise the program will fail to run.
+	</p>
+	<p>
+		If all of the sensors are functioning, you are ready to connect the circuit in Step 4.
 	</p>
  </SECTION>
  
  <SECTION ID="Section_7">
-	<H3>Step 4: Connect Circuit</H3>
+	<H3>Step 4: Connecting the Circuit</H3>
 	<p>
+		In this step, the mechanical assembly will be complete. The components required here are:
+		<ul>
+			<li>Raspberry Pi 3</li>
+			<li>Modular Sensor Hat</li>
+			<li>Custom PCB</li>
+			<li>DHT-11 Humidity & Temperature Sensor</li>
+			<li>BMP180 Barometric Pressure Sensor</li>
+			<li>YL-40 Breakout Board</li>
+			<li>6V Solar Cell</li>
+			<li>Male-to-female Prototyping Wire (From Pi Starter Kit)</li>
+		</ul> 		
+	</p>
+	<p>
+		To assemble the project, follow these steps:
+		<ol>
+			<li>Disconnect the Raspberry Pi from power</li>
+			<li>Connect the BMP180 and YL-40 to the Modular Sensor Hat, the same way when you were testing</li>
+			<li>Install the Modular Sensor Hat on the Raspberry Pi 3 GPIO header. Connect it so that the Sensor Hat hovers over the Pi, and does not extend beyond it</li>
+			<li>Stack the Custom PCB with the Sensor Hat. This time, make sure the Custom PCB hangs over the edge of the Pi, and does NOT hover over the Sensor Hat </li>
+			<li>Look at the Custom PCB board file. Connect the DHT-11 to the right-hand 5-pin header. Looking at the DHT-11 breakout board, make sure that the pins go into the correct header input. 
+				Make sure it is properly inserted by following the traces to the GPIO header (G to pin 6, V to pin 1, S to pin 7)</li>
+			<li>Connect the Solar Cell to the left-hand 5-pin header. The black wire (ground) should plug into the right-most pin (which is connected to GPIO pin 6). The red wire can connect
+				to either pin connected to the 10K resistor</li>
+			<li>Connect the male end of the prototyping wire to the remaining resistor-connected pin. This will be used to probe the Solar Cell. The female end should connect to AIN2 on the
+				top of the YL-40, which leads to an analog-to-digital converter.</li>
+		</ol>
+		That's it! Double-check the connections to make sure they are correct. Once you are sure, power up the Pi. Once the Pi has booted up, edit the solar.py file again, removing the comment you made
+		in Step 3. Run the program again, and you should see a flow of readings on the screen. It works! (I hope). You should see the LED on the Sensor Hat light up green when everything is working fine. If it lights
+		up red, that means a sensor is not connected properly. With a functioning piece of hardware, it is time to make a nice box to put it in.
 	</p>
  </SECTION>
  
  <SECTION ID="Section_6">
-	<H3>Step 5: Laser-cutting Box</H3>
+	<H3>Step 5: Box Creation & Final Assembly</H3>
 	<p>
+		Below is the design of the box, that will be laser-cut from acrylic.<br>
+		<a href="../BuildFiles/BOX">Download - Solar Project Box (BROKEN)</a><br>
+		<img src="../Images/BOX" alt="Solar Project Box" style="width:600px;height:400px;"><br>
+		It is recommended that clear 3mm acrylic is used for the process, but any colour/transparency can be used. To print my box, I used Humber's Prototype Lab, and the helpful staff setup and laser-cut the box
+		for me. It is recommended that you go to them, or find another professional service, to have the box cut.
 	</p>
- </SECTION>
- 
- <SECTION ID="Section_5">
-	<H3>Step 6: Box Assembly</H3>
 	<p>
+		Once the box has been cut, use acrylic glue to put everything (except the top!) together. Be careful when using the glue, as it may contain harmful chemicals. Once everything has dried, you may begin to mount the 
+		Raspberry Pi in the box. 
 	</p>
- </SECTION>
- 
- <SECTION ID="Section_4">
-	<H3>Step 7: Mounting Project in Box</H3>
 	<p>
+		The M2.5 kit is required for this step, and you will make sure the Raspberry Pi is mounted on the standoffs with its IO ports facing the cutouts provided. Before securing the Pi, remove
+		the Modular Sensor Hat from the Pi. Make sure the Pi is securely mounted (but not too tight) before reconnecting the circuit. Briefly disconnect the Solar Cell, and reconnect it by feeding the red and black wire
+		through the holes in the side of the box. The Solar Cell must rest outside of the box to make sure it generates optimal power. Now just put the top on (do not glue) and you are all done! The Solar Panel Project
+		has been built! 
 	</p>
  </SECTION>
 
  <SECTION ID="Downloads">
  <H3>Downloads</H3>
   <p>
-    <a href="Documents/CENG317ProjectProposalRichardBurak.docx">Download - Solar Panel Project Proposal</a><br>
-    <a href="Documents/Project Schedule, Richard Burak.mpp">Download - Solar Panel Project Schedule</a><br>
-    <a href="Documents/Solar Project Budget, Richard Burak.xlsx">Download - Solar Panel Project Budget</a><br>
-    <a href="Documents/Solar Project Status Report 1, Richard Burak.docx">Download - Solar Panel Project Status Report #1</a><br>
-    <a href="Documents/Solar Project Status Report 2-1, Richard Burak.docx">Download - Solar Panel Project Status Report #2</a><br>
-    <a href="https://github.com/richard-burak/richard-burak.github.io/blob/master/Documents/SolarProjectPlacard2016.pub">Repository Link - Solar Panel Project Placard</a><br>
-    <a href="Documents/Solar Project Status Report 3, Richard Burak.docx">Download - Solar Panel Project Status Report #3</a><br>
-    <a href="Documents/Solar Project Status Report 4, Richard Burak.docx">Download - Solar Panel Project Status Report #4</a><br>
-    <a href="Documents/Solar Project Status Report 5, Richard Burak.docx">Download - Solar Panel Project Status Report #5</a><br>
-    <a href="https://drive.google.com/open?id=1HuwditKgQx7AoN1jPlrv7YETbwR5FcB54mhs3n1VhEw">In-class Presentation</a><br>
-    <a href="Documents/Solar Project Budget (Updated), Richard Burak.xlsx">Download - Solar Panel Project Budget (Updated)</a><br>
+    <a href="../Documents/Solar Project Budget, Richard Burak.xlsx">Download - Solar Panel Project Budget</a><br>
+    <a href="../Documents/Solar Project Budget (Updated), Richard Burak.xlsx">Download - Solar Panel Project Budget (Updated)</a><br>
+	<a href="../BuildFiles/solar.py">Download - solar.py</a><br>
+	<a href="../BuildFiles/HSHV4-student version.brd">Download - Modular Sensor Hat, EAGLE Board File</a><br>
+	<a href="../BuildFiles/HSHV4-student version.sch">Download - Modular Sensor Hat, EAGLE Schematic File</a><br>
+	<a href="../BuildFiles/solarpanel2.brd">Download - Custom PCB, EAGLE Board File</a><br>
+	<a href="../BuildFiles/solarpanel2.sch">Download - Custom PCB, EAGLE Schematic File</a><br>
+	<a href="../BuildFiles/BOX">Download - Solar Project Box (BROKEN)</a><br>
   </p>
  </SECTION>
 
