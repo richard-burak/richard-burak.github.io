@@ -18,21 +18,28 @@ pre {
 
 <ARTICLE ID="Article_1">
  <HEADER ID="Header_Article_1">
-  <H2>Solar Panel Project</H2>
+  <H2>Build - Solar Panel Project</H2>
  </HEADER>
-	
-	
-<SECTION ID="Section_13">
-  <H3>Week 14 (Build Instructions)</H3>
+ 
+ <SECTION ID="Section_13">
+	<H3>i - Build Instructions - Intro</H3>
 	<p>
-		This lengthy section will host the intructions to guild the solar panel project, which was designed by Salvatore Angilletta, Richard Burak (myself), and Steven Spiteri. It will describe how to reproduce our project,
+		This page will host the intructions to build the solar panel project, which was designed by Salvatore Angilletta, Richard Burak (myself), and Steven Spiteri. It will describe how to reproduce our project,
 		and anyone following this should be able to successfully replicate it.
 	</p>
+ </SECTION>
+ 
+ <SECTION ID="Section_12">
+	<H3>ii - System Diagram</H3>
 	<p>
 		First, the idea of the project must be understood. The goal is to read data from a solar panel, and then allow an easy means of viewing this data. This build instruction will show you how to display this data on the
 		Raspberry Pi 3 and view it remotely through SSH and VNC. 
-		 <img src="Images/SystemDiagramSolar.png" alt="Solar Project System Diagram" style="width:740px;height:325px;"><br>
+		 <img src="../Images/SystemDiagramSolar.png" alt="Solar Project System Diagram" style="width:740px;height:325px;"><br>
 	</p>
+ </SECTION>
+ 
+ <SECTION ID="Section_11">
+	<H3>iii - Budget and Materials</H3>
 	<p>
 		Required materials are listed in the table below. Some materials (soldering iron access, multimeter access, custom PCB, acrylic box) were available through Humber College, but an effort has been made to price these items.
 		Using external sources to create the custom PCB and box may have varying prices, and quotes would be required on a personal basis. More detailed information about the pricing, as well as a list of more materials/tools 
@@ -65,6 +72,12 @@ pre {
 		<td> <a href="http://www.robotshop.com/ca/en/electronic-brick-humidity-temperature-sensor.html">Link</a></td>
 	  </tr>
 	  <tr>
+		<td>6V Solar Cell</td>
+		<td>1</td>
+		<td>$34.93 ($10 at <a href="http://sayal.com/zinc/index.asp">Sayal)</a></td>
+		<td> <a href="https://www.amazon.ca/Radio-Shack-50mah-Solar-277-1205/dp/B002XV3HFE/ref=sr_1_1?ie=UTF8&qid=1480736805&sr=8-1&keywords=6v+solar+cell+radioshack">Link</a></td>
+	  </tr>
+	  <tr>
 		<td>Safety Glasses</td>
 		<td>1</td>
 		<td>$5.04</td>
@@ -93,6 +106,12 @@ pre {
 		<td>2</td>
 		<td>$0.89</td>
 		<td> <a href="http://www.digikey.ca/product-detail/en/sullins-connector-solutions/PPTC051LFBN-RC/S6103-ND/807239">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>2x20 GPIO Header</td>
+		<td>1</td>
+		<td>$9.99</td>
+		<td> <a href="https://www.amazon.ca/GPIO-Stacking-Header-Pi-Extra-long/dp/B00TW0W9HQ/ref=sr_1_2?ie=UTF8&qid=1480734825&sr=8-2&keywords=gpio+header">Link</a></td>
 	  </tr>
 	  <tr>
 		<td>Humber PCB Components Kit</td>
@@ -125,7 +144,10 @@ pre {
 		<td> <a href="https://www.amazon.com/HVAZI-Standoff-Stainless-Assortment-Male-Female/dp/B01L06CUJG/ref=sr_1_5?s=industrial&ie=UTF8&qid=1480722221&sr=1-5&keywords=m2.5+screws">Link</a></td>
 	  </tr>
 	</table>
-	<br>
+ </SECTION>
+ 
+ <SECTION ID="Section_11b">
+	<H3>iv - Time Commitment</H3>
 	<p>
 		This project has been worked on throughout my 5th Semester at Humber College, and in the end will take me about 15 weeks to complete. With these instructions, the time required should be cut down significantly,
 		and the research and setup has taken up most of my time. The table below shows the approximate time required to perform each task. This project could be completed in less than a month, even with a busy schedule.
@@ -183,7 +205,15 @@ pre {
 	<p>
 		The tasks above are recommended to be completed in order, but do not necessarily have to. The step-by-step guide will go in the order of the above tasks.
 	</p>
-	<br>
+	<p>
+		First you must order the required parts. It is preferable that the parts are the same as the ones linked above, but any compatible part can be used. It could take up to 2 weeks for parts to arrive, but they can arrive at
+		any timne after ordering. Digi-Key items arrived in less than 24 hours, while some other items took over a week. It is best to order everything at once to ensure all the required materials are together. Once the
+		Raspberry Pi 3 arrives, you may begin Step 1.
+	</p>
+ </SECTION>
+ 
+ <SECTION ID="Section_10">
+	<H3>Step 1: Raspberry Pi Setup</H3>
 	<p>
 		Once the Raspberry Pi 3 has arrived, begin by connecting it to a display. Next, connect the keyboard and mouse. You can now plug the Pi into power and begin configuring the Raspbian OS. The setup will be explained on
 		screen, and you may begin using the Pi once it has completed.<br>
@@ -203,153 +233,93 @@ pre {
 		Use the arrow keys to navigate to advanced options and hit enter. Once there, navigate to I2C and hit enter again. Select "Yes" to have I2C enabled on the Pi.<br>
 		Next, we must prepare the Python program used to interface with the sensors. The program below (solar.py) will show the data gathered by the sensors in the circuit. It will not successfully run
 		until all the sensors have been successfully connected.<br>
-		<a href="Documents/solar.py">Download - solar.py</a><br>
+		<a href="../BuildFiles/solar.py">Download - solar.py</a><br>
 		Simply place the file in any directory on the Pi.
 	</p>
 	<p>
+		With the Pi now configured, we can move on to the hardware part of this project.
 	</p>
-</SECTION>
-
-<SECTION ID="Section_12">
-  <H3>Week 13</H3>
-  <p>
-    A presentation has been created, and is ready to be shown in class on Tuesday November 29th.<br>
-    <a href="https://drive.google.com/open?id=1HuwditKgQx7AoN1jPlrv7YETbwR5FcB54mhs3n1VhEw">In-class Presentation</a><br><br>
-    Below is the PCB that was printed. It has been soldered, but I believe there is a short circuit that must be fixed. Another DHT-11 fell victim to a bad connection, so I have ordered another one. 
-	I must resolder one of the connections before continuing with the custom PCB, so the old configuration will be used during the presentation. Also, progress has been made on the project box in CorelDRAW, 
-	but the file is not ready to publish. Once we measure everything corretly, we will be ready to order the PCB standoffs required.<br>
-    <img src="Images/custom_pcb_done.jpeg" alt="Custom PCB Soldered" style="width:600px;height:500px;"><br><br>
-    Finally, I have updated the budget with how much I have currently spent on the project.
-    <a href="Documents/Solar Project Budget (Updated), Richard Burak.xlsx">Download - Solar Panel Project Budget (Updated)</a><br><br>
-
-  </p>
-</SECTION>
-
-<SECTION ID="Section_11">
-  <H3>Week 12</H3>
-  <p>
-    The PCB from the last log entry has been printed, and is ready to solder. The code for the Sensor Hat LED has been implemented to change colour depending on sensor status.
-    The headers (rectangular connectors) for the custom PCB were ordered from Digi-Key, and were delivered quickly. More details are included in this week's status report.<br>
-    <a href="Documents/Solar Project Status Report 5, Richard Burak.docx">Download - Solar Panel Project Status Report #5</a><br><br>
-    <img src="Images/headers.jpeg" alt="PCB Headers" style="width:600px;height:500px;"><br>
-    <i>The headers took less than a day to arrive after ordering.</i><br><br>
-
-    <img src="https://github.com/steve-spiteri/steve-spiteri.github.io/blob/master/images/pcb.jpg?raw=true" alt="PCB Printed" style="width:500px;height:300px;"><br>
-    <i>Custom PCB to be soldered. Credit to Steven Spiteri for the photo.</i><br>
-  </p>
  </SECTION>
-
-<SECTION ID="Section_10">
-  <H3>Week 11</H3>
-  <p>
-    This week a plan for a custom PCB has been completed. Details of this can be found in the document attached.<br>
-    Below is a screenshot of the board file we created. It is a very basic circuit, but will clean up the project nicely. This design was mainly worked on by Steven, but I will edit it to accompany my different DHT-11 breakout.<br>
-    <br>Not mentioned in the report is the financial update. My instructor asked me to update this during class: No additional funds have been spent on the project at the time. I hope to purchase rectangular connectors to solder to my custom PCB. This should not cost much, so I will remain under budget.
-    <a href="Documents/Solar Project Status Report 4, Richard Burak.docx">Download - Solar Panel Project Status Report #4</a><br><br>
-    <img src="Images/custom_board.png" alt="Custom Board" style="width:650px;height:400px;"><br>
-  </p>
+ 
+ <SECTION ID="Section_9">
+	<H3>Step 2: PCB Soldering/Testing</H3>
+	<p>
+		The main PCB that holds the I2C circuits, called the Modular Sensor Hat, was provided by Humber College. The board must first be printed, and the components aquired (from the Prototype Lab in J building).
+		Solder the components provided according to the Eagle .brd and .sch files. Be sure to wear safety glasses while soldering, and consider all aspects of your own (and others') safety. (Also remember to change my
+		name to yours, for that personal touch!)
+		<a href="../BuildFiles/HSHV4-student version.brd">Download - Modular Sensor Hat, EAGLE Board File</a><br>
+		<a href="../BuildFiles/HSHV4-student version.sch">Download - Modular Sensor Hat, EAGLE Schematic File</a><br>
+		<img src="../Images/msh_pcb_brd.png" alt="MSH Board" style="width:600px;height:600px;"><br>
+		<img src="../Images/msh_pcb_sch.png" alt="MSH Schematic" style="width:600px;height:400px;"><br>
+		Caution: There is a problem with the Modular Sensor Hat, I have included a quote from our instructor regarding the problem below.
+		<blockquote>
+			<i> 
+				"RTC module can charge the CR2032 battery causing damage. To permanently disable the charging circuit, please remove the 200 ohm surface mount resistor near the unused I2C header by 
+				pushing it off the PCB with a hot soldering iron."
+			</i>
+		</blockquote> 
+	</p>
+	<p>
+		Next, the addition custom PCB must be printed and soldered. The materials required for this step are as follows:
+		<ul>
+			<li>10K Resistor (From Pi Starter Kit)</li>
+			<li>5-pin Header (x2)</li>
+			<li>2x20 pin GPIO Header</li>
+			<li>Short pieces of 22 gauge wire (x3)</li>
+		</ul> 
+		<a href="../BuildFiles/solarpanel2.brd">Download - Custom PCB, EAGLE Board File</a><br>
+		<a href="../BuildFiles/solarpanel2.sch">Download - Custom PCB, EAGLE Schematic File</a><br>
+		<img src="../Images/pcb_brd.png" alt="Board" style="width:600px;height:400px;"><br>
+		<img src="../Images/pcb_sch.png" alt="Schematic" style="width:300px;height:300px;"><br>
+		Looking at the board above, be sure to insert the GPIO header from the bottom of the board, and the 5-pin headers from the top. The 3 short wires are required for the vias (which connect the top and bottom of
+		the board). Also, make sure to solder the top-left end of the GPIO header, to ensure it is sturdy and does not move around.
+	</p>
+	<p>
+		The final step with the boards is to ensure all the connections are working before connecting them. If faulty boards are connected to sensors (or the Pi) they can cause permanent damage to either. Save youself time 
+		(and money) by making sure they work before continuing. To do this, power and ground the boards first. Apply 3.3V to pin 1, and ground pin 6. Now we need the digital multimeter. Connect the multimeter to the same
+		ground as the Pi, and use the other connection to probe the different parts of the circuit. Measure both resistance and voltage, to make sure the values are correct. If any problems are detected, resoldering may
+		be required.<br>
+		<img src="../Images/rpi_pinout.png" alt="Raspberry Pi 3 Pinout" style="width:700px;height:250px;"><br>
+		<i><a href="http://raspberrypi.stackexchange.com/questions/40318/raspberry-pi-2-can-gpio-pins-29-40-be-used-gpio-gen-input-output-configurable-in">Credit for image.</a></i>
+	</p>
+	<p>
+		If the boards pass all the tests, then you are ready to move on to Step 3.
+	</p>
  </SECTION>
-
-<SECTION ID="Section_9">
-  <H3>Week 10</H3>
-  <p>
-    I hope to demonstrate my project in class this week, as making the open house may not be a possibility. I have attached my third progress report.<br>
-    <a href="Documents/Solar Project Status Report 3, Richard Burak.docx">Download - Solar Panel Project Status Report #3</a><br>
-  </p>
+ 
+ <SECTION ID="Section_8">
+	<H3>Step 3: Unit Testing Sensors</H3>
+	<p>
+		To test the sensors, first connect the Modular Sensor Hat to your Raspberry Pi. Next, connect the barometric pressure sensor to the 4-pin header labelled "DS-RTC", making sure to match the labels on the board 
+		and breakout. Next, connect the YL-40 board provided in the Humber components pack to the neighbouring 4-pin header labelled "PCF - ADC".
+		<pre><code> i2cdetect -y 1</code></pre>
+	</p>
  </SECTION>
-
-<SECTION ID="Section_8">
-  <H3>Week 9</H3>
-  <p>
-    The Solar Panel project group got together this week to begin testing circuit designs. A functioning circuit has been successfully created and tested, and all of the sensors work. Readings are also successfully displayed in the Raspberry Pi terminal, though light level and solar cell voltage will required some conversions into their respective units. Below, a 30 second build video is posted to show the progress made on the project so far, and what I plan to show next. All three group members used the same template for our videos to remain consistent. The next step will be the conversion for the two values stated above, and designing a case for the open house. The final step will be storing the data in a database.
-    <video width="640" height="480" controls>
-      <source src="Videos/buildVideoOct.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> <br>
-    The two previous videos are still available for viewing, but are not considered as part of the build video. Finally, two circuits have been designed. One includes the Modular Sensor Hat that was previously soldered, and the other does not require it. The plan is to use the one with the Modular Sensor Hat.
-  </p>
+ 
+ <SECTION ID="Section_7">
+	<H3>Step 4: Connect Circuit</H3>
+	<p>
+	</p>
  </SECTION>
-
-<SECTION ID="Section_7">
-  <H3>Week 8</H3>
-  <p>
-    This week, my goal was to have a Placard ready for the project. The Solar Project members got together to create this. The placard .pub file will be uploaded to my repository, and the other members will post links to the same file.<br>
-    <a href="https://github.com/richard-burak/richard-burak.github.io/blob/master/Documents/SolarProjectPlacard2016.pub">Placard Publisher File</a><br>
-    <img src="Images/solar_placard.png" alt="Placard" style="width:350px;height:500px;"><br><br>
-  
-    Below is a short video showing the PCB successfully running on a Raspberry Pi. This will not be used in the final build video, but it has been posted as a demonstration.
-      <video width="640" height="480" controls>
-      <source src="Videos/pcb_running.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> <br>
-  </p>
+ 
+ <SECTION ID="Section_6">
+	<H3>Step 5: Laser-cutting Box</H3>
+	<p>
+	</p>
  </SECTION>
-
-<SECTION ID="Section_6">
-  <H3>Week 7</H3>
-  <p>
-    <a href="Documents/Solar Project Status Report 2-1, Richard Burak.docx">Download - Solar Panel Project Status Report #2</a><br>
-    The next step is to put the basic hardware of the project together. The circuit has been planned out, and now must be built and tested. Stated in the report above, I have completed my PCB and done basic testing. A video of the board running will be edited and posted for next week.<br>
-    <img src="Images/pcb01.JPG" alt="PCB Image 1" style="width:500px;height:400px;"><br>
-    <img src="Images/pcb02.JPG" alt="PCB Image 2" style="width:500px;height:400px;"><br>
-    The three of us working on the project have previously made a simple light sensor circuit together. I plan to use either this circuit, or the sensor provided by the Humber PCB. This will be decided as testing of the PCB continues.<br>
-    <img src="Images/LightSensor.png" alt="Light Sensor Circuit" style="width:500px;height:400px;"><br>
-    We also got together to create the same circuit for the project. Using Fritzing, we created a layout. This will be constructed and tested in the lab period.<br>
-    <img src="Images/Layout.png" alt="Fritzing Layout" style="width:500px;height:400px;"><br>
-    The video showing off the components and tools required for the project is posted below. This will be edited to fit in the eventual build video.<br>
-    <video width="640" height="480" controls>
-      <source src="Videos/Solar Parts Video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> <br>
-  </p>
- </SECTION>
-
+ 
  <SECTION ID="Section_5">
-  <H3>Week 6</H3>
-  <p>
-    Below is a document containing an in-depth status report about the project. It is on schedule and under budget so far! The materials are expected to arrive on Wednesday October 5th. Once they have been aquired, a video and images can be posted.<br>
-	  <a href="Documents/Solar Project Status Report 1, Richard Burak.docx">Download - Solar Panel Project Status Report #1</a><br>
-  </p>
- </SECTION>
-	
-	
-<SECTION ID="Section_4">
-  <H3>Week 5</H3>
-  <p>
-    With the budget proposed, I now understand the materials required. Anything that I am not in possession of will be ordered from RobotShop, or purchased from Sayal. A log of the items will be posted once the they have arrived.<br>
-		<a href="Documents/Solar Project Budget, Richard Burak.xlsx">Download - Solar Panel Project Budget</a>
-  </p>
- </SECTION>
-	
-	
- <SECTION ID="Section_3">
-  <H3>Week 4</H3>
-  <p>
-    A schedule has been outlined, and I now have an idea of what to work on. I will be sure to finish everything on time and according to schedule.<br> 
-		 <a href="Documents/Project Schedule, Richard Burak.mpp">Download - Solar Panel Project Schedule</a>
-  </p>
+	<H3>Step 6: Box Assembly</H3>
+	<p>
+	</p>
  </SECTION>
  
- <SECTION ID="Section_2">
- <H3>Week 3</H3>
-  <p>
-    The project was proposed, and the proposal was accepted. Preliminary work on the Solar Panl project has begun.<br>
-		 <a href="Documents/CENG317ProjectProposalRichardBurak.docx">Download - Solar Panel Project Proposal</a>
+ <SECTION ID="Section_4">
+	<H3>Step 7: Mounting Project in Box</H3>
+	<p>
+	</p>
+ </SECTION>
 
- </SECTION>
- 
- <SECTION ID="Section_1">
- <H3>Week 2</H3>
-  <p>
-    In the first week, we were instructed to make an LED blink on a Raspberry Pi. This lab was meant to teach us how to use and interface with the Pi.<br>
-		LED on (Green)<br>
-		<img src="Images/LEDgreen.jpeg" alt="LED Green" class="rotate90" style="width:400px;height:400px;"><br>
-		LED Off<br>
-		<img src="Images/LEDoff.jpeg" alt="LED Off" class="rotate90" style="width:400px;height:400px;"><br>
-		LED on (Red) <br>
-		<img src="Images/LEDred.jpeg" alt="LED Red" class="rotate90" style="width:400px;height:400px;"><br>
-  </p>
- </SECTION>
  <SECTION ID="Downloads">
  <H3>Downloads</H3>
   <p>

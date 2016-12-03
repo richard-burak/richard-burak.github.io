@@ -6,125 +6,19 @@
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
-code { 
-    background: hsl(30, 80%, 90%); 
-}
-
-pre {
-    white-space: pre-wrap;
-    background: hsl(30,80%,90%);
-}
 </style>
 
 <ARTICLE ID="Article_1">
  <HEADER ID="Header_Article_1">
-  <H2>Solar Panel Project</H2>
+  <H2>Home - Solar Panel Project</H2>
  </HEADER>
 	
 	
 <SECTION ID="Section_13">
   <H3>Week 14 (Build Instructions)</H3>
-	<p>
-		This lengthy section will host the intructions to guild the solar panel project, which was designed by Salvatore Angilletta, Richard Burak (myself), and Steven Spiteri. It will describe how to reproduce our project,
-		and anyone following this should be able to successfully replicate it.
-	</p>
-	<p>
-		First, the idea of the project must be understood. The goal is to read data from a solar panel, and then allow an easy means of viewing this data. This build instruction will show you how to display this data on the
-		Raspberry Pi 3 and view it remotely through SSH and VNC. 
-		 <img src="Images/SystemDiagramSolar.png" alt="Solar Project System Diagram" style="width:740px;height:325px;"><br>
-	</p>
-	<p>
-		Required materials are listed in the table below. Some materials (soldering iron access, multimeter access, custom PCB, acrylic box) were available through Humber College, but an effort has been made to price these items.
-		Using external sources to create the custom PCB and box may have varying prices, and quotes would be required on a personal basis. More detailed information about the pricing, as well as a list of more materials/tools 
-		that may be used can be found in the budget Excel files hosted on this website. An important thing to note is the required access to a desktop computer, and a network. A keyboard/mouse along with an HDMI display are required
-		to setup the Raspberry Pi 3, and the network is required to update the Pi and remotely access it.
-	</p>
-	<table>
-	  <tr>
-		<th>Item</th>
-		<th>Quantity</th>
-		<th>Individual Item Cost</th>
-		<th>Web Link</th>
-	  </tr>
-	  <tr>
-		<td>Raspberry Pi 3 Kit</td>
-		<td>1</td>
-		<td>$119.99</td>
-		<td> <a href="https://www.amazon.ca/CanaKit-Raspberry-Ultimate-Starter-Kit/dp/B01CCF9BYG/ref=sr_1_3?ie=UTF8&qid=1474395691&sr=8-3&keywords=raspberry+pi">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>Barmetric Pressure Sensor</td>
-		<td>1</td>
-		<td>$8.33</td>
-		<td> <a href="http://www.robotshop.com/ca/en/octopus-barometric-pressure-sensor-brick.html">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>DHT-11 Sensor Breakout</td>
-		<td>1</td>
-		<td>$4.04</td>
-		<td> <a href="http://www.robotshop.com/ca/en/electronic-brick-humidity-temperature-sensor.html">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>Safety Glasses</td>
-		<td>1</td>
-		<td>$5.04</td>
-		<td> <a href="https://www.amazon.ca/Pyramex-Mini-S2510SN-Safety-Glasses/dp/B000NP5D3G/ref=sr_1_4?ie=UTF8&qid=1480724554&sr=8-4&keywords=safety+glasses">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>Lead Free Solder (10g)</td>
-		<td>1</td>
-		<td>$4.49</td>
-		<td> <a href="http://www.robotshop.com/ca/en/lead-free-solder-wire-10g-tube.html">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>Soldering Iron (25W)</td>
-		<td>1</td>
-		<td>$6.80</td>
-		<td> <a href="http://www.robotshop.com/ca/en/elenco-sr-1-standard-25w-pencil-soldering-iron.html">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>Soldering Iron Holder</td>
-		<td>1</td>
-		<td>$4.56</td>
-		<td> <a href="http://www.robotshop.com/ca/en/elenco-soldering-iron-holder.html">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>5-pin PCB Header (female)</td>
-		<td>2</td>
-		<td>$0.89</td>
-		<td> <a href="http://www.digikey.ca/product-detail/en/sullins-connector-solutions/PPTC051LFBN-RC/S6103-ND/807239">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>Humber PCB Components Kit</td>
-		<td>1</td>
-		<td>~$40.00</td>
-		<td>N/A</td>
-	  </tr>
-	  <tr>
-		<td>Custom PCB</td>
-		<td>1</td>
-		<td>Unknown</td>
-		<td>N/A</td>
-	  </tr>
-	  <tr>
-		<td>Laser-cut Acrylic Box</td>
-		<td>1</td>
-		<td>Unknown</td>
-		<td>N/A</td>
-	  </tr>
-	  <tr>
-		<td>Digital Multimeter</td>
-		<td>1</td>
-		<td>$14.59</td>
-		<td> <a href="http://www.robotshop.com/ca/en/m-1000e-compact-digital-multimeter.html">Link</a></td>
-	  </tr>
-	  <tr>
-		<td>M2.5 Screws/Standoffs</td>
-		<td>4</td>
-		<td>$11.99 (Bulk)</td>
-		<td> <a href="https://www.amazon.com/HVAZI-Standoff-Stainless-Assortment-Male-Female/dp/B01L06CUJG/ref=sr_1_5?s=industrial&ie=UTF8&qid=1480722221&sr=1-5&keywords=m2.5+screws">Link</a></td>
-	  </tr>
-	</table>
+	
+	
+	
 	<br>
 	<p>
 		This project has been worked on throughout my 5th Semester at Humber College, and in the end will take me about 15 weeks to complete. With these instructions, the time required should be cut down significantly,
