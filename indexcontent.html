@@ -6,6 +6,14 @@
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
+code { 
+    background: hsl(30, 80%, 90%); 
+}
+
+pre {
+    white-space: pre-wrap;
+    background: hsl(30,80%,90%);
+}
 </style>
 
 <ARTICLE ID="Article_1">
@@ -13,12 +21,203 @@
   <H2>Solar Panel Project</H2>
  </HEADER>
 	
+	
+<SECTION ID="Section_13">
+  <H3>Week 14 (Build Instructions)</H3>
+	<p>
+		This lengthy section will host the intructions to guild the solar panel project, which was designed by Salvatore Angilletta, Richard Burak (myself), and Steven Spiteri. It will describe how to reproduce our project,
+		and anyone following this should be able to successfully replicate it.
+	</p>
+	<p>
+		First, the idea of the project must be understood. The goal is to read data from a solar panel, and then allow an easy means of viewing this data. This build instruction will show you how to display this data on the
+		Raspberry Pi 3 and view it remotely through SSH and VNC. 
+		 <img src="Images/SystemDiagramSolar.png" alt="Solar Project System Diagram" style="width:740px;height:325px;"><br>
+	</p>
+	<p>
+		Required materials are listed in the table below. Some materials (soldering iron access, multimeter access, custom PCB, acrylic box) were available through Humber College, but an effort has been made to price these items.
+		Using external sources to create the custom PCB and box may have varying prices, and quotes would be required on a personal basis. More detailed information about the pricing, as well as a list of more materials/tools 
+		that may be used can be found in the budget Excel files hosted on this website. An important thing to note is the required access to a desktop computer, and a network. A keyboard/mouse along with an HDMI display are required
+		to setup the Raspberry Pi 3, and the network is required to update the Pi and remotely access it.
+	</p>
+	<table>
+	  <tr>
+		<th>Item</th>
+		<th>Quantity</th>
+		<th>Individual Item Cost</th>
+		<th>Web Link</th>
+	  </tr>
+	  <tr>
+		<td>Raspberry Pi 3 Kit</td>
+		<td>1</td>
+		<td>$119.99</td>
+		<td> <a href="https://www.amazon.ca/CanaKit-Raspberry-Ultimate-Starter-Kit/dp/B01CCF9BYG/ref=sr_1_3?ie=UTF8&qid=1474395691&sr=8-3&keywords=raspberry+pi">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>Barmetric Pressure Sensor</td>
+		<td>1</td>
+		<td>$8.33</td>
+		<td> <a href="http://www.robotshop.com/ca/en/octopus-barometric-pressure-sensor-brick.html">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>DHT-11 Sensor Breakout</td>
+		<td>1</td>
+		<td>$4.04</td>
+		<td> <a href="http://www.robotshop.com/ca/en/electronic-brick-humidity-temperature-sensor.html">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>Safety Glasses</td>
+		<td>1</td>
+		<td>$5.04</td>
+		<td> <a href="https://www.amazon.ca/Pyramex-Mini-S2510SN-Safety-Glasses/dp/B000NP5D3G/ref=sr_1_4?ie=UTF8&qid=1480724554&sr=8-4&keywords=safety+glasses">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>Lead Free Solder (10g)</td>
+		<td>1</td>
+		<td>$4.49</td>
+		<td> <a href="http://www.robotshop.com/ca/en/lead-free-solder-wire-10g-tube.html">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>Soldering Iron (25W)</td>
+		<td>1</td>
+		<td>$6.80</td>
+		<td> <a href="http://www.robotshop.com/ca/en/elenco-sr-1-standard-25w-pencil-soldering-iron.html">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>Soldering Iron Holder</td>
+		<td>1</td>
+		<td>$4.56</td>
+		<td> <a href="http://www.robotshop.com/ca/en/elenco-soldering-iron-holder.html">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>5-pin PCB Header (female)</td>
+		<td>2</td>
+		<td>$0.89</td>
+		<td> <a href="http://www.digikey.ca/product-detail/en/sullins-connector-solutions/PPTC051LFBN-RC/S6103-ND/807239">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>Humber PCB Components Kit</td>
+		<td>1</td>
+		<td>~$40.00</td>
+		<td>N/A</td>
+	  </tr>
+	  <tr>
+		<td>Custom PCB</td>
+		<td>1</td>
+		<td>Unknown</td>
+		<td>N/A</td>
+	  </tr>
+	  <tr>
+		<td>Laser-cut Acrylic Box</td>
+		<td>1</td>
+		<td>Unknown</td>
+		<td>N/A</td>
+	  </tr>
+	  <tr>
+		<td>Digital Multimeter</td>
+		<td>1</td>
+		<td>$14.59</td>
+		<td> <a href="http://www.robotshop.com/ca/en/m-1000e-compact-digital-multimeter.html">Link</a></td>
+	  </tr>
+	  <tr>
+		<td>M2.5 Screws/Standoffs</td>
+		<td>4</td>
+		<td>$11.99 (Bulk)</td>
+		<td> <a href="https://www.amazon.com/HVAZI-Standoff-Stainless-Assortment-Male-Female/dp/B01L06CUJG/ref=sr_1_5?s=industrial&ie=UTF8&qid=1480722221&sr=1-5&keywords=m2.5+screws">Link</a></td>
+	  </tr>
+	</table>
+	<br>
+	<p>
+		This project has been worked on throughout my 5th Semester at Humber College, and in the end will take me about 15 weeks to complete. With these instructions, the time required should be cut down significantly,
+		and the research and setup has taken up most of my time. The table below shows the approximate time required to perform each task. This project could be completed in less than a month, even with a busy schedule.
+	</p>
+	<table>
+		<tr>
+			<th>Task</th>
+			<th>Time Required (Approx.)</th>
+		</tr>
+		<tr>
+			<td>Ordering Parts</td>
+			<td>1 hour</td>
+		</tr>
+		<tr>
+			<td>Parts Delivery</td>
+			<td>2 weeks</td>
+		</tr>
+		<tr>
+			<td>Raspberry Pi 3 Setup</td>
+			<td>2 hours</td>
+		</tr>
+		<tr>
+			<td>Unit Testing Sensors</td>
+			<td>2 hours</td>
+		</tr>
+		<tr>
+			<td>Printing PCBs</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<td>Soldering PCBs</td>
+			<td>3 hours</td>
+		</tr>
+		<tr>
+			<td>Testing PCBs</td>
+			<td>30 minutes</td>
+		</tr>
+		<tr>
+			<td>Connecting Circuits</td>
+			<td>10 minutes</td>
+		</tr>
+		<tr>
+			<td>Laser-cutting Box</td>
+			<td>10 minutes</td>
+		</tr>
+		<tr>
+			<td>Box Assembly</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<td>Mount project in box</td>
+			<td>5 minutes</td>
+		</tr>
+	</table>
+	<p>
+		The tasks above are recommended to be completed in order, but do not necessarily have to. The step-by-step guide will go in the order of the above tasks.
+	</p>
+	<br>
+	<p>
+		Once the Raspberry Pi 3 has arrived, begin by connecting it to a display. Next, connect the keyboard and mouse. You can now plug the Pi into power and begin configuring the Raspbian OS. The setup will be explained on
+		screen, and you may begin using the Pi once it has completed.<br>
+		In the top right-hand corner of the screen, select the network you want the Pi to automatically connect to when it boots up (skip this step if the device is using a wired connection). Be sure to make note of the IP address,
+		as it is required later to remotely connect to the device. The IP can be found by hovering the mouse over the WiFi symbol on the top-right.<br>
+		Once connected to the internet, open the command line terminal and run the following command:<br> 
+		<pre><code> sudo apt-get update</code></pre>
+		This will update th Pi to the most recent version. This is important, as security updates are required to keep the device safe.<br>
+		Next, SSH must be enabled by default, otherwise you will not be able to remotely access the Pi. To ensure SSH starts when the Pi is botted up, run this in the command line:<br><br>
+		<pre><code> mv /boot/boot_enable_ssh.rc /boot/boot.rc</code></pre>
+		Now that SSH is enabled, VNC must be installed and enabled. VNC allows users to navigate the GUI of the Pi remotely. To install this, run the following commands:<br><br> 
+		<pre><code> sudo install tightvncserver
+ tightvncserver</code></pre>
+		Setup a password for VNC when asked. You will now be able to run VNC server by accessing the Pi through SSH, then interface using any VNC client.<br>
+		To prepare the Pi for use with the sensors, I2C must be enabled. To do this, start by running the following command:<br><br>
+		<pre><code> sudo raspi-config</code></pre>
+		Use the arrow keys to navigate to advanced options and hit enter. Once there, navigate to I2C and hit enter again. Select "Yes" to have I2C enabled on the Pi.<br>
+		Next, we must prepare the Python program used to interface with the sensors. The program below (solar.py) will show the data gathered by the sensors in the circuit. It will not successfully run
+		until all the sensors have been successfully connected.<br>
+		<a href="Documents/solar.py">Download - solar.py</a><br>
+		Simply place the file in any directory on the Pi.
+	</p>
+	<p>
+	</p>
+</SECTION>
+
 <SECTION ID="Section_12">
   <H3>Week 13</H3>
   <p>
     A presentation has been created, and is ready to be shown in class on Tuesday November 29th.<br>
     <a href="https://drive.google.com/open?id=1HuwditKgQx7AoN1jPlrv7YETbwR5FcB54mhs3n1VhEw">In-class Presentation</a><br><br>
-    Below is the PCB that was printed. It has been soldered, but I believe there is a short circuit that must be fixed. Another DHT-11 fell victim to a bad connection, so I have ordered another one. I must resolder one of the connections before continuing with the custom PCB, so the old configuration will be used during the presentation. Also, progress has been made on the project box in CorelDRAW, but the file is not ready to publish. Once we measure everything corretly, we will be ready to order the PCB standoffs required.<br>
+    Below is the PCB that was printed. It has been soldered, but I believe there is a short circuit that must be fixed. Another DHT-11 fell victim to a bad connection, so I have ordered another one. 
+	I must resolder one of the connections before continuing with the custom PCB, so the old configuration will be used during the presentation. Also, progress has been made on the project box in CorelDRAW, 
+	but the file is not ready to publish. Once we measure everything corretly, we will be ready to order the PCB standoffs required.<br>
     <img src="Images/custom_pcb_done.jpeg" alt="Custom PCB Soldered" style="width:600px;height:500px;"><br><br>
     Finally, I have updated the budget with how much I have currently spent on the project.
     <a href="Documents/Solar Project Budget (Updated), Richard Burak.xlsx">Download - Solar Panel Project Budget (Updated)</a><br><br>
@@ -163,8 +362,8 @@
     <a href="Documents/Solar Project Status Report 3, Richard Burak.docx">Download - Solar Panel Project Status Report #3</a><br>
     <a href="Documents/Solar Project Status Report 4, Richard Burak.docx">Download - Solar Panel Project Status Report #4</a><br>
     <a href="Documents/Solar Project Status Report 5, Richard Burak.docx">Download - Solar Panel Project Status Report #5</a><br>
-    <a href="https://drive.google.com/open?id=1HuwditKgQx7AoN1jPlrv7YETbwR5FcB54mhs3n1VhEw">In-class Presentation</a><br><br>
-    <a href="Documents/Solar Project Budget (Updated), Richard Burak.xlsx">Download - Solar Panel Project Budget (Updated)</a><br><br>
+    <a href="https://drive.google.com/open?id=1HuwditKgQx7AoN1jPlrv7YETbwR5FcB54mhs3n1VhEw">In-class Presentation</a><br>
+    <a href="Documents/Solar Project Budget (Updated), Richard Burak.xlsx">Download - Solar Panel Project Budget (Updated)</a><br>
   </p>
  </SECTION>
 
